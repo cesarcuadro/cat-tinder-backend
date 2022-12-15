@@ -11,6 +11,7 @@ RSpec.describe Cat, type: :model do
 
   it 'enjoys is less than 10 characters' do
     cat = Cat.create enjoys: 'me like'
+    expect(cat.errors[:enjoys].first).to eq("is too short (minimum is 10 characters)")
     expect(cat.errors[:enjoys]).to_not be_empty
   end
 end
